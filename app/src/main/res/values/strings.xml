@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VideoViewer</string>
+    <string name="load_button">Select a Video</string>
+    <string name="loading_message">Localising your video...</string>
+    <string name="placeholder_title">Title</string>
+    <string name="placeholder_info">Blahdy Blah Blah</string>
+</resources>
