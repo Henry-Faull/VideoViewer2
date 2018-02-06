@@ -9,6 +9,9 @@ import android.util.Log;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import org.jcodec.api.JCodecException;
+
+import java.io.File;
 import java.io.IOException;
 
 public class PlayerActivity extends AppCompatActivity {
@@ -47,13 +50,13 @@ public class PlayerActivity extends AppCompatActivity {
 
         //grab frames every 0.5 seconds?
         String videoPath = videoUri.getPath();
-        FrameGrabber frameGrabber = new FrameGrabber(videoPath);
+        //FrameGrabber frameGrabber = new FrameGrabber(videoUri,this, this);
         //LinkedList<File> frames = frameGrabber.grabFrames(0.5);
-        try {
-            frameGrabber.grabFrames(2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            frameGrabber.grabFrames(2);
+//        } catch (IOException | JCodecException e) {
+//            e.printStackTrace();
+//        }
 
         //feed to localisation model
 
@@ -69,15 +72,6 @@ public class PlayerActivity extends AppCompatActivity {
     //start the video
     public void startVideo() {
         Log.i("progress" , "Play startVideo");
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                int videoDuration = videoView.getDuration();
-                //duration is in milliseconds
-                Log.i("durationtest", String.format("videoDuration " + videoDuration));
-            }
-        });
-
 
         videoView.start();
 
